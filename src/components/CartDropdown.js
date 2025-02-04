@@ -1,8 +1,6 @@
 "use client"
 import { useCart } from '@/app/providers'
-import { Minus, Plus} from 'lucide-react'
-import { ShoppingCart } from 'lucide-react'
-import { X } from 'lucide-react'
+import { Minus, Plus, ShoppingCart, X } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Button } from '@/components/ui/button'
@@ -19,7 +17,6 @@ export default function CartDropdown({ onClose }) {
         onClose()
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [onClose])
@@ -35,7 +32,7 @@ export default function CartDropdown({ onClose }) {
   return (
     <div
       ref={dropdownRef}
-      className="absolute right-0 mt-2 w-96 bg-card text-card-foreground rounded-lg shadow-2xl z-50 border animate-in fade-in-0 zoom-in-95"
+      className="absolute w-fit right-0 mt-2 max-w-[100vw] bg-card text-card-foreground rounded-lg shadow-2xl z-50 border animate-in fade-in-0 zoom-in-95"
     >
       <div className="p-6">
         <div className="flex items-center justify-between mb-6">
@@ -60,12 +57,12 @@ export default function CartDropdown({ onClose }) {
           </div>
         ) : (
           <>
-            <ScrollArea className="h-[320px] pr-4 -mr-4">
-              <div className="space-y-4">
+            <ScrollArea className="h-[320px] pr-4 w-fit -mr-4">
+              <div className="space-y-4 w-[100%]">
                 {state.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center gap-4 group rounded-lg p-2 transition-colors hover:bg-muted/50"
+                    className="flex items-center gap-4 rounded-lg p-2 transition-colors hover:bg-muted/50"
                   >
                     <div className="relative w-16 h-16 rounded-md bg-muted flex items-center justify-center overflow-hidden">
                       {item.thumbnail ? (
@@ -80,14 +77,14 @@ export default function CartDropdown({ onClose }) {
                       )}
                     </div>
 
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-medium truncate">{item.title}</h4>
+                    <div className="flex-1 w-[90%]">
+                      <h4 className="font-medium truncate w-[50%]">{item.title}</h4>
                       <p className="text-sm text-muted-foreground">
                         ${item.price.toFixed(2)}
                       </p>
                     </div>
 
-                    <div className="flex items-center border rounded-lg overflow-hidden">
+                    <div className="flex items-center border rounded-lg overflow-hidden flex-shrink-0">
                       <Button
                         variant="ghost"
                         size="icon"
