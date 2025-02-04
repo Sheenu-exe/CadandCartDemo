@@ -54,7 +54,7 @@ export default function SearchBar() {
 
   return (
     <div ref={searchRef} className="relative">
-      <div className="relative">
+      <div className="relative text-black">
         <input
           type="text"
           value={query}
@@ -92,7 +92,7 @@ export default function SearchBar() {
       </div>
 
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute w-full mt-1 bg-white rounded-lg shadow-lg z-50">
+        <div className="absolute w-full mt-1 bg-white text-black rounded-lg shadow-lg z-50">
           {suggestions.map((product) => (
             <div
               key={product.id}
